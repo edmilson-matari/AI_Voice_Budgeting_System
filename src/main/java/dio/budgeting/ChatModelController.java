@@ -24,6 +24,4 @@ public class ChatModelController {
     public String helloWorld() {
         return "Hello World";
     }
-    
-    
 }
