@@ -1,11 +1,13 @@
 package dio.budgeting.application;
 
+import org.springframework.stereotype.Component;
+
 import dio.budgeting.application.input.PersistTransactionInput;
 import dio.budgeting.application.output.TransactionOutput;
-import dio.budgeting.domain.Category;
 import dio.budgeting.domain.Transaction;
 import dio.budgeting.domain.TransactionRepository;
 
+@Component
 public class PersistTransactionUseCase {
 
     private final TransactionRepository transactionRepository;
