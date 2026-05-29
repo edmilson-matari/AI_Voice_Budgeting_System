@@ -20,7 +20,7 @@ public class TransactionEntity {
     private UUID id;
 
     private String description;
-    private long amount;
+    private double amount;
     private Category category;
 
     public static TransactionEntity from(Transaction transaction) {

@@ -7,7 +7,7 @@ import dio.budgeting.application.output.TransactionOutput;
 import dio.budgeting.domain.Transaction;
 import dio.budgeting.domain.TransactionRepository;
 
-@Component
+@Service
 public class PersistTransactionUseCase {
 
     private final TransactionRepository transactionRepository;
@@ -16,6 +16,7 @@ public class PersistTransactionUseCase {
         this.transactionRepository = transactionRepository;
     }
 
+    @Tool
     public TransactionOutput execute(PersistTransactionInput input) {
         var transaction = transactionRepository.save(new Transaction(input.description(), input.amount(), input.category()));
         return TransactionOutput.from(transaction);

@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 public class Transaction {
     private TransactionId id;
     private String description;
-    private long amount;
+    private double amount;
     private Category category;
 
-    public Transaction(String description, long amount, Category category) {
+    public Transaction(String description, double amount, Category category) {
         this.id = new TransactionId();
         this.amount = amount;
         this.category = category;
