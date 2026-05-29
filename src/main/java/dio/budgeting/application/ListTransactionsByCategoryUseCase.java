@@ -2,6 +2,7 @@ package dio.budgeting.application;
 
 import java.util.List;
 
+import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Service;
 
 import dio.budgeting.application.output.TransactionOutput;
@@ -16,6 +17,7 @@ public class ListTransactionsByCategoryUseCase {
         this.transactionRepository = transactionRepository;
     }
 
+    @Tool(name = "find-transactions", description = "List transactions by category")
     public List<TransactionOutput> execute(Category category) {
         return transactionRepository.findAllByCategory(category).stream().map(TransactionOutput::from).toList();
     }

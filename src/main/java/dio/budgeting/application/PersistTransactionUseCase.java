@@ -1,6 +1,8 @@
 package dio.budgeting.application;
 
-import org.springframework.stereotype.Component;
+import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
+import org.springframework.stereotype.Service;
 
 import dio.budgeting.application.input.PersistTransactionInput;
 import dio.budgeting.application.output.TransactionOutput;
@@ -16,8 +18,8 @@ public class PersistTransactionUseCase {
         this.transactionRepository = transactionRepository;
     }
 
-    @Tool
-    public TransactionOutput execute(PersistTransactionInput input) {
+    @Tool(name = "persist-transactions", description = "Persist a new transaction")
+    public TransactionOutput execute(@ToolParam(description = "A saved transaction") PersistTransactionInput input) {
         var transaction = transactionRepository.save(new Transaction(input.description(), input.amount(), input.category()));
         return TransactionOutput.from(transaction);
     }
