@@ -2,7 +2,7 @@ services:
   database:
     image: mysql:9.6
     environment:
-      MYSQL_DATABASE: budgeting
+      MYSQL_DATABASE: transaction
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: app
       MYSQL_PASSWORD: app
