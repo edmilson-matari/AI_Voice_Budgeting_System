@@ -39,12 +39,13 @@ public class TransactionEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
-    public static TransactionEntity from(Transaction transaction) {
+    public static TransactionEntity from(Transaction transaction, UserEntity user) {
         return new TransactionEntity(
                 transaction.getId().uuid(),
                 transaction.getDescription(),
                 transaction.getAmount(),
-                transaction.getCategory());
+                transaction.getCategory(),
+                user);
     }
 
     public Transaction toDomain() {

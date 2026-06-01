@@ -8,6 +8,7 @@ import dio.budgeting.domain.Category;
 import dio.budgeting.domain.Transaction;
 import dio.budgeting.domain.TransactionRepository;
 import dio.budgeting.infrastructure.persistence.entity.TransactionEntity;
+import dio.budgeting.infrastructure.persistence.entity.UserEntity;
 
 @Repository
 public class JpaTransactionRepository implements TransactionRepository {
@@ -19,14 +20,14 @@ public class JpaTransactionRepository implements TransactionRepository {
     }
 
     @Override
-    public Transaction save(Transaction transaction) {
-        var entity = TransactionEntity.from(transaction);
+    public Transaction save(Transaction transaction, UserEntity userId) {
+        var entity = TransactionEntity.from(transaction, userId);
         return transactionEntityRepository.save(entity).toDomain();
     }
 
     @Override
-    public List<Transaction> findAllByCategory(Category category) {
-        return transactionEntityRepository.findAllByCategory(category)
+    public List<Transaction> findAllByCategory(Category category, Long userId) {
+        return transactionEntityRepository.findAllByCategoryAndUserId(category, userId)
                 .stream()
                 .map(TransactionEntity::toDomain)
                 .toList();
