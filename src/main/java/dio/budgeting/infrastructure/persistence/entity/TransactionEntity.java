@@ -7,15 +7,20 @@ import dio.budgeting.domain.Transaction;
 import dio.budgeting.domain.TransactionId;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "tb_transactions")
 public class TransactionEntity {
     @Id
     private UUID id;
@@ -24,6 +29,7 @@ public class TransactionEntity {
     private String description;
     @Column(nullable = false)
     private double amount;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Category category;
 
