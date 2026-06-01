@@ -5,6 +5,7 @@ import java.util.UUID;
 import dio.budgeting.domain.Category;
 import dio.budgeting.domain.Transaction;
 import dio.budgeting.domain.TransactionId;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,11 @@ public class TransactionEntity {
     @Id
     private UUID id;
 
+    @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
     private double amount;
+    @Column(nullable = false)
     private Category category;
 
     public static TransactionEntity from(Transaction transaction) {
