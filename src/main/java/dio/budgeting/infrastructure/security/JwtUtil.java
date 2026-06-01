@@ -68,8 +68,8 @@ public class JwtUtil {
         } catch (UnsupportedJwtException e) {
             System.out.println("JWT token is unsupported: " + e.getMessage());
         } catch (IllegalArgumentException e) {
-            System.out.println("JWT claims string is empty: " + e.getMessage);
+            System.out.println("JWT claims string is empty: " + e.getMessage());
         }
+        return false;
     }
-
 }
