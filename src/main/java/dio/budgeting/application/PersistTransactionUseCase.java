@@ -26,7 +26,7 @@ public class PersistTransactionUseCase {
     public TransactionOutput execute(@ToolParam(description = "A saved transaction") PersistTransactionInput input) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserEntity user = userRepository.findByUsername(username);
-        var transaction = transactionRepository.save(new Transaction(input.description(), input.amount(), input.category()), user.getId());
+        var transaction = transactionRepository.save(new Transaction(input.description(), input.amount(), input.category()), user);
         return TransactionOutput.from(transaction);
     }
 
