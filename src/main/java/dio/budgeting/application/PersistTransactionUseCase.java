@@ -3,6 +3,7 @@ package dio.budgeting.application;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import dio.budgeting.application.input.PersistTransactionInput;
@@ -26,6 +27,9 @@ public class PersistTransactionUseCase {
     public TransactionOutput execute(@ToolParam(description = "A saved transaction") PersistTransactionInput input) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserEntity user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User Not Found with username: " + username);
+        }
         var transaction = transactionRepository.save(new Transaction(input.description(), input.amount(), input.category()), user);
         return TransactionOutput.from(transaction);
     }
