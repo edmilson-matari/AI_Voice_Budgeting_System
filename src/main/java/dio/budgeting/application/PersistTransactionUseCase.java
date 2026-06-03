@@ -1,5 +1,7 @@
 package dio.budgeting.application;
 
+import java.util.logging.Logger;
+
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.security.core.context.SecurityContextHolder;

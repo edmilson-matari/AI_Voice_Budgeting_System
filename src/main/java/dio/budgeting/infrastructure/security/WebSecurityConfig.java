@@ -17,14 +17,10 @@ import dio.budgeting.application.CustomUserDetailsService;
 
 @Configuration
 public class WebSecurityConfig {
-    private final AuthTokenFilter authenticationJwtTokenFilter;
     @Autowired
     CustomUserDetailsService userDetailsService;
     @Autowired
     private AuthEntryPointJwt unAuthEntryPointJwt;
-    WebSecurityConfig(AuthTokenFilter authenticationJwtTokenFilter) {
-        this.authenticationJwtTokenFilter = authenticationJwtTokenFilter;
-    }
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();

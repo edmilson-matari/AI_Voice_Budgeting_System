@@ -62,6 +62,11 @@ public class TransactionController {
     public void createTransaction(@RequestBody TransactionRequest request) {
         pTransactionUseCase.execute(request.toInput());
     }
+    @GetMapping
+    public List<TransactionResponse> listAllTransactions() {
+        return listTransactionsByCategoryUseCase.execute().stream().map(TransactionResponse::from).toList();
+    }
+    
     
     @PostMapping(value = "/ai", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = "audio/mp3")
     ResponseEntity<Resource> transcribe(@RequestParam("file") MultipartFile file) {

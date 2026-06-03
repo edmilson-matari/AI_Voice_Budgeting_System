@@ -28,4 +28,11 @@ public class ListTransactionsByCategoryUseCase {
         UserEntity user = userRepository.findByUsername(username);
         return transactionRepository.findAllByCategory(category, user.getId()).stream().map(TransactionOutput::from).toList();
     }
+
+    @Tool(name = "get-all-transactions")
+    public List<TransactionOutput> execute() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserEntity user = userRepository.findByUsername(username);
+        return transactionRepository.findAllByUserId(user.getId()).stream().map(TransactionOutput::from).toList();
+    }
 }

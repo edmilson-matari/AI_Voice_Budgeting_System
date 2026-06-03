@@ -1,0 +1,66 @@
+@baseUrlAPI = http://localhost:8080
+@authToken = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraWRkeSIsImlhdCI6MTc4MDQ3NzIyOCwiZXhwIjoxNzgwNDgwODI4fQ.znrv-Wdpl69RZIk2Uc-18xkCocbFVbgd9Ub24OFZVFE
+POST {{baseUrlAPI}}/transaction
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "description": "Bought twenty cops of glasses costing 100 dolars",
+    "category": "GROCERIES",
+    "amount": 34545
+}
+
+###
+POST {{baseUrlAPI}}/transaction
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "description": "Bought twenty cops of glasses costing 100 dolars",
+    "category": "PHARMA",
+    "amount": 2042
+}
+
+###
+POST {{baseUrlAPI}}/api/auth/signin
+Content-Type: application/json
+
+{
+    "username": "mitcho",
+    "password": "mitcho123"
+}
+
+###
+POST {{baseUrlAPI}}/api/auth/signup
+Content-Type: application/json
+
+{
+    "username": "mitcho",
+    "password": "mitcho123"
+}
+
+###
+POST {{baseUrlAPI}}/api/auth/signup
+Content-Type: application/json
+
+{
+    "username": "kiddy",
+    "password": "kiddy123"
+}
+
+###
+POST {{baseUrlAPI}}/api/auth/signin
+Content-Type: application/json
+
+{
+    "username": "kiddy",
+    "password": "kiddy123"
+}
+
+###
+GET {{baseUrlAPI}}/transaction/PHARMA
+Authorization: Bearer {{authToken}}
+
+###
+GET {{baseUrlAPI}}/transaction
+Authorization: Bearer {{authToken}}

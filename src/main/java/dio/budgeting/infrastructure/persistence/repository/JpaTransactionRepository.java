@@ -33,4 +33,12 @@ public class JpaTransactionRepository implements TransactionRepository {
                 .toList();
     }
 
+    @Override
+    public List<Transaction> findAllByUserId(Long userId) {
+        return transactionEntityRepository.findAllByUserId(userId)
+                .stream()
+                .map(TransactionEntity::toDomain)
+                .toList();
+    }
+
 }
