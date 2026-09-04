@@ -1,4 +1,4 @@
-# AI Voice Budgeting System
+# AI Voice Budgeting System API
 
 An AI-powered budgeting API built with Spring Boot, Spring AI, JPA, MySQL, and JWT security. The application lets users register and authenticate, create and list transactions, transcribe voice input, and generate spoken responses from text.
 
